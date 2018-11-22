@@ -1,0 +1,15 @@
+version: '3.2'
+services:
+  generate-gif:
+    build: ./generate-gif
+    ports:
+      - "3000:3000"
+    restart: always
+    volumes:
+      - type: bind
+        source: ./camera_output
+        target: /app/camera_output
+      - type: bind
+        source: ./gifs
+        target: /app/gifs
+

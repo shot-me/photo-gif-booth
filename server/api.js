@@ -1,10 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-var sys = require('sys')
-var exec = require('child_process').exec;
-var utils = require('../server/utils');
-
 var fs = require('fs'),
     path = require('path');
 
@@ -25,28 +21,6 @@ function initRouter(config) {
         res.send({ photos: getMostRecentFileNames(photosDir).slice(0, nrOfFramesFromCamera) });
         res.end();
     });
-    router.get(generateGifUrl, function (req, res) {
-        var number = req.query.number;
-        console.log('[NODE]: Creating gif and sending it to number ' + number);
-        exec("bash scripts/create_gif.sh " + req.query.number + " " + utils.randomStringGen(5) + " " + req.query.frames, function (err, stdout, stederr) {
-            if (stederr) {
-                console.log('[NODE]: Generating gif stderr: ' + stederr);
-            }
-            if (stdout) {
-                console.log('[NODE]: Generating gif output: ' + stdout);
-            }
-            if (err) {
-                console.log('[NODE]: Error in creating gif: ' + err);
-
-            }
-            const success = err ? false : true;
-            console.log('[NODE]: Finished creating gif with success: ' + success);
-            res.send({ success });
-            res.end();
-        });
-
-    });
-
     return router;
 }
 module.exports = initRouter;
