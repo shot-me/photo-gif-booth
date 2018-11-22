@@ -2,8 +2,11 @@
 # This scripts generates a gif from all the files in folder: camera_output
 # First argument is the id of gif
 # Second argument is the telephone number
+if test "$#" -lt 2; then
+    echo "[BASH] ERROR Illegal number of parameters"
+    exit
+fi
 
-a=${@}
 shopt -s nullglob
 frames=(camera_output/*)
 
@@ -11,14 +14,7 @@ gif_output_folder='./gifs/'
 gif_file_name=$2_$1.gif
 gif_path=$gif_output_folder$gif_file_name
 
-echo "[BASH] Generating gif for number of frames ${#frames[@]}"
-echo "${frames[*]}"
-if test "$#" -lt 2; then
-    echo "[BASH] ERROR Illegal number of parameters"
-    exit
-fi
-# bash scripts/create_gif.sh 123 34 1.jpg 2.jpg 3.jpg  ->
-# Should create gif from frames: 1.jpg 2.jpg 3.jpg 1.pg
+echo "[BASH] Generating gif for number of frames: ${#frames[@]}"
 
 rm -Rf tmp
 mkdir tmp
