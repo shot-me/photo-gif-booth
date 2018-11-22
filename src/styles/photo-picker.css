@@ -1,0 +1,29 @@
+.pp-img-container {
+    width: 600px; /* Width of cropped image */
+    height: 600px;
+    overflow: hidden; /*hide bounds of image */
+    margin: 0;   /*reset margin of figure tag*/
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 39px;
+}
+
+.pp-img {
+    display:block; /*remove inline-block spaces*/
+    margin: -00px -60px; /* Top and Left parametr of croping */
+    width: 100%;
+}
+
+.pp-frame {
+    display: none;
+    position: absolute;
+    top: 200px; /* Position of frame */
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+
+.pp-buttons {
+    margin-top: -130px;
+}

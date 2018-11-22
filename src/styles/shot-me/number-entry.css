@@ -1,0 +1,128 @@
+.shot-me-number-entry-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  max-width: 100%;
+  color: #120d24;
+}
+
+.shot-me-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 0;
+  font-size: 1.5em;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.shot-me-entry-inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* shotMe keyboard */
+.shot-me-num-keyboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px 0 0 0;
+}
+
+.shot-me-num-keyboard > .shot-me-num-keyboard-row {
+  display: flex;
+  justify-content: center;
+}
+
+.shot-me-num-keyboard > .shot-me-num-keyboard-row > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 10vh;
+  height: 10vh;
+  font-size: 1.5em;
+  margin: 2px;
+  border-radius: 5%;
+  background-color: #fff;
+  color: #120d24;
+}
+
+.shot-me-num-keyboard
+  > .shot-me-num-keyboard-row
+  > .shot-me-num-keyboard-backspace {
+  width: 20.5vh;
+  height: 10vh;
+  font-size: 1.5em;
+}
+
+.shot-me-num-keyboard > .shot-me-num-keyboard-row > div:hover {
+  background: #d9d9d9;
+}
+
+/*phone number entry*/
+.shot-me-phone-number-entry {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 15px 40px;
+  font-weight: lighter;
+  font-size: 3em;
+  letter-spacing: 0.1em;
+  height: 13vh;
+  width: 500px;
+  background: #ffffff;
+}
+
+@media only screen and (max-width: 900px) {
+  /* mobile phone number entry */
+  .shot-me-phone-number-entry {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 15px 40px;
+    font-weight: lighter;
+    font-size: 3em;
+    letter-spacing: 0.1em;
+    height: 100px;
+    width: 500px;
+    background: #ffffff;
+  }
+
+  /* shotMe mobile keyboard */
+  .shot-me-num-keyboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    margin: 50px 0;
+    height: 40%;
+  }
+
+  .shot-me-num-keyboard > .shot-me-num-keyboard-row > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 7.5vh;
+    height: 7.5vh;
+    font-size: 1.5em;
+    margin: 2px;
+    border-radius: 5%;
+    background-color: #fff;
+    color: #120d24;
+  }
+
+  .shot-me-num-keyboard
+    > .shot-me-num-keyboard-row
+    > .shot-me-num-keyboard-backspace {
+    width: 15.37vh;
+    height: 7.5vh;
+    font-size: 1.5em;
+  }
+}

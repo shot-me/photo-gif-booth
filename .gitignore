@@ -1,0 +1,17 @@
+# dependencies
+node_modules
+
+# production
+build
+
+.vs/config/applicationhost.config
+.vs/ProjectSettings.json
+.vs/slnx.sqlite
+gifs/*.gif
+!camera_output/1.jpg
+!camera_output/2.jpg
+!camera_output/3.jpg
+!camera_output/4.jpg
+!camera_output/5.jpg
+!camera_output/6.jpg
+camera_output/*.jpg

@@ -1,0 +1,280 @@
+@import "../../node_modules/font-awesome/css/font-awesome.css";
+@font-face{
+    font-family:"gt-walsheim-regular";
+ src:url(../fonts/GT-Walsheim-Regular.ttf);
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    color: #fff;
+}
+
+img {
+    pointer-events: none;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+input[type=checkbox] {
+    /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  padding: 20px 0 20px 0;
+}
+
+.form {
+    display: flex;
+}
+
+.form-checkbox {
+    display: flex;
+    padding-right: 20px;
+}
+
+.form-text {
+    font-size: 20px;
+}
+.confirm-btn {
+    text-align: center;
+}
+
+.bottom-caption {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.corner-logo {
+    position: absolute;
+    right: 5%;
+    top: 7%;
+    height: 15%;
+}
+
+.content {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+    .content > div {
+        display:block;
+        position: absolute;
+        top: 50px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        width: 80%;
+    }
+    .content > .v-center {
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+.opacity-07 {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+    filter: alpha(opacity=70);
+    -moz-opacity: 0.7;
+    -khtml-opacity: 0.7;
+    opacity: 0.7;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.big-caption {
+    font-size: 4em;
+}
+
+.mid-caption {
+    font-size: 3em;
+}
+
+.regular-caption {
+    font-size: 21px;
+}
+
+.rounded-link {
+    display: inline-block;
+    min-width:4.5em;
+    margin: 0.5em 1em;
+    padding: 0.5em 1em;
+    border: 0.1em solid #fff;
+    border-radius: 9999em;
+    font-size:2em;
+    font-weight: bold;
+    color: #fff;
+}
+
+.white-bg {
+    background: #fff;
+}
+
+.green-color {
+    color: #2b3f2a;
+}
+
+.white-rounded-border {
+    padding: 0.5em;
+    border: 0.1em solid #fff;
+    border-radius: 9999em;
+}
+
+.white-panel {
+    background: rgba(255, 255, 255, 0.2);
+    width: 500px;
+    height: 300px;
+}
+
+
+#end > div {
+    top:35%;
+}
+
+#photo-invite > div{
+    top:30%;
+}
+
+#sms-sender > div {
+    position:fixed;
+    top:0;
+    width:50%;
+}
+
+#sms-sender > .left{
+    position:absolute;
+    left:0;
+    height:100vh;
+}
+#sms-sender > .left > div{
+    padding-top:25%;
+    margin:4em;
+}
+
+#sms-sender > .right{
+    right:0;
+}
+
+.sms-hidden{
+    visibility: hidden;
+}
+
+/* numeric keyboard */
+.numeric-keyboard {
+    display: flex;
+    position:fixed;
+    right:0;
+    height:100vh;
+    width:50%;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+    justify-content: space-around;
+    flex-direction: column;
+    background-color:rgba(0,0,0,0.5);
+}
+
+    .numeric-keyboard > .row {
+        display: flex;
+        justify-content: space-around;
+    }
+
+        .numeric-keyboard > .row > div {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 15vh;
+            height: 15vh;
+            font-size:4em;
+            border: 0.08em solid #99a299;
+            border-radius: 9999em;
+            color: #99a299;
+        }
+        .numeric-keyboard > .row > div:hover{
+            background:#99a299;
+            color:#2b3f2a;
+        }
+
+
+        .numeric-backspace{
+            width:1.2em;
+        }
+
+.phone-number-entry{
+    text-align:left;
+    padding:0.3em 1.2em;
+    font-family:"gt-walsheim-regular";
+    font-weight:lighter;
+    font-size: 3em;
+    letter-spacing: 0.2em;
+    color:#99a299;
+    border-bottom:0.08em solid #99a299;
+}
+
+/* modal */
+.modal-link{
+    display:inline;
+}
+.modal {
+    position:absolute;
+    top:-100%;
+    left:0;
+    margin:10vh 10% 10vh 10%;
+    max-height: 95%;
+    padding:1.5em;
+    z-index: 9999;
+    text-align: justify;
+    overflow-y:scroll;
+    visibility: hidden;
+    background:rgba(43,63,42,0.95);
+}
+
+.modal-show {
+  visibility: visible;
+}
+
+.modal .modal-bar{
+    font-weight: bold;
+}
+
+.modal .modal-bar a {
+position:absolute;
+right:1em;
+text-align:center;
+}
+
+.white-scrollbar::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: transparent;
+}
+
+.white-scrollbar::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: transparent;
+}
+
+.white-scrollbar::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #fff;
+}
