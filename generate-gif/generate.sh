@@ -1,38 +1,20 @@
 #!/usr/bin/env bash
+# This scripts generates a gif from all the files in folder: camera_output
 # First argument is the id of gif
 # Second argument is the telephone number
-# Third and next are frames to be generated
-a=${@}
-for var in "$@"; do
-    (( count++ )) # count - number of frames
-done
+if test "$#" -lt 2; then
+    echo "[BASH] ERROR Illegal number of parameters"
+    exit
+fi
 
-# bash scripts/create_gif.sh 123 34 1.jpg 2.jpg 3.jpg  ->
-# Should create gif from frames: 1.jpg 2.jpg 3.jpg 1.pg
-
-camera_upload="camera_output/"
-echo "Creating gifs from photos in folder: ${camera_upload}"
-frames=""
-incrementFrames=`seq -s ' ' 3 $count`
-for frame in $incrementFrames; do
-  frames="$frames $camera_upload${!frame}"
-done
-
-let "count = count - 1"
-decrementFrames=`seq -s ' ' $count -1 4`
-for frame in $decrementFrames; do
-  frames="$frames $camera_upload${!frame}"
-done
+shopt -s nullglob
+frames=(camera_output/*)
 
 gif_output_folder='./gifs/'
 gif_file_name=$2_$1.gif
 gif_path=$gif_output_folder$gif_file_name
 
-
-#
-# Cropping frames
-# $1  $2 - frame number that we acre creating
-#
+echo "[BASH] Generating gif for number of frames: ${#frames[@]}"
 
 rm -Rf tmp
 mkdir tmp
@@ -45,7 +27,7 @@ phase2_folder=tmp/phase2
 phase3_folder=tmp/phase3
 
 frames_with_branding=""
-for frame in $frames; do
+for frame in ${frames[*]}; do
     frame_with_branding_nr=`echo $frame | sed 's:.*/::'`
     # echo $frame_with_branding_nr
     # echo $frame
@@ -56,11 +38,12 @@ for frame in $frames; do
     frames_with_branding="$frames_with_branding $phase3_folder/$frame_with_branding_nr"
 done
 convert -delay 15 $frames_with_branding $gif_path
+echo $frames_with_branding
 rm -Rf tmp
 if [ -e "$gif_path" ]; then
     echo "[create_gif.sh] Gif generated successfully $gif_path"
     exit 0
-else 
+else
     echo "[create_gif.sh] Error in generating gif. $gif_path"
     exit 1
-fi 
+fi

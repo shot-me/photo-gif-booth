@@ -15,3 +15,4 @@ gifs/*.gif
 !camera_output/5.jpg
 !camera_output/6.jpg
 camera_output/*.jpg
+.DS_Store
