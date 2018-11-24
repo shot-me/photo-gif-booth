@@ -21,9 +21,8 @@ if (process.env.NODE_ENV == 'production') {
 
 app.use("/camera_output", express.static(__dirname + "/camera_output"));
 
-console.log("Listening on port:" + config.backendPort);
-
 app.use(config.backendRoute, require("./server/api.js")(config));
-require("./server/send.js").setSendingGifInterval();
+//require("./server/send.js").setSendingGifInterval();
 
-module.exports = app.listen(config.backendPort);
+console.log("[WEB_APP] Application started on port " + process.env.WEB_APP_PORT);
+module.exports = app.listen(process.env.WEB_APP_PORT);

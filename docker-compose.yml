@@ -16,4 +16,6 @@ services:
     build: .
     ports:
       - "3002:3002"
+    environment:
+      WEB_APP_PORT: 3002
     restart: always
