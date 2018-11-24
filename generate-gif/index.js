@@ -27,7 +27,7 @@ app.get('/generate_gif/:phoneNumber', function (req, res) {
     res.end('Error: no number provided');
   } else {
     console.log('[NODE]: Creating gif and sending it to number ' + number);
-    exec("bash generate.sh " + number + " " + randomStringGen(5), function (err, stdout, stederr) {
+    exec("bash generate.sh " + number + " " + randomStringGen(5) + " gifs/ camera_output/ ", function (err, stdout, stederr) {
       if (stederr) {
         console.log('[NODE]: Generating gif stderr: ' + stederr);
       }
