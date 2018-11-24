@@ -5,7 +5,6 @@ import { ShotMePhoneNumberEntry } from "../ShotMePhoneNumberEntry";
 import ShotMeFullWidthButton from "../ShotMeFullWidthButton";
 import { browserHistory } from 'react-router';
 
-import * as config from "./../../../../config";
 
 export default class ShotMeNumberEntryScreen extends React.Component {
   constructor() {
@@ -25,14 +24,10 @@ export default class ShotMeNumberEntryScreen extends React.Component {
     if (!frames) {
       alert('No photos. Go to preview screen once again');
     } else {
-      const url =
-        config.backendHostUrl +
-        "/api/generateGif?number=" +
-        this.state.phoneNumber +
-        "&frames=" +
-        frames;
-
-      fetch(url)
+      const url = window.config.generateGif.endpoint();
+      fetch(url, {
+        number: this.state.phoneNumber
+      })
         .then(res => res.json())
         .then(({ success }) => {
           if (!success) {

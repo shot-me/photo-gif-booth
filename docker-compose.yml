@@ -3,7 +3,7 @@ services:
   generate-gif:
     build: ./generate-gif
     ports:
-      - "3000:3000"
+      - "3003:3003"
     restart: always
     volumes:
       - type: bind
@@ -12,4 +12,8 @@ services:
       - type: bind
         source: ./gifs
         target: /app/gifs
-
+  app:
+    build: .
+    ports:
+      - "3002:3002"
+    restart: always

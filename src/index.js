@@ -9,6 +9,10 @@ import "./styles/shot-me/gif-preview.css";
 import "./styles/shot-me/end-screen.css";
 import "./styles/shot-me/photo-picker.css";
 
+import config  from '../config';
+
+window.config = config;
+
 function App() {
   return <Routes history={browserHistory} />;
 }

@@ -1,7 +1,10 @@
+import { generateGif } from './generate-gif/config';
+
 const config = {
   ports: {
-    print: 3001
+    print: 3001,
   },
+  generateGif,
   backendPort: 8080,
   frontendPort: 3000,
   backendRoute: "/api",
