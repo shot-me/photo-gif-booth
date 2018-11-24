@@ -8,6 +8,7 @@ import "./styles/shot-me/number-entry.css";
 import "./styles/shot-me/gif-preview.css";
 import "./styles/shot-me/end-screen.css";
 import "./styles/shot-me/photo-picker.css";
+import "./styles/shot-me/loader.css"
 
 import config  from '../config';
 

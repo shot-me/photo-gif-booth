@@ -3,6 +3,7 @@ import ShotMeNumericKeyboard from "../ShotMeNumericKeyboard";
 import { onShotMeKeyboardClick } from "../actions/keyboardActions";
 import { ShotMePhoneNumberEntry } from "../ShotMePhoneNumberEntry";
 import ShotMeFullWidthButton from "../ShotMeFullWidthButton";
+import ShotMeLoader from "../ShotMeLoader";
 import { browserHistory } from 'react-router';
 
 
@@ -21,6 +22,7 @@ export default class ShotMeNumberEntryScreen extends React.Component {
 
   generateGif() {
     const url = window.config.generateGif.getUrl(this.state.phoneNumber);
+    this.setState({ loading: true });
     fetch(url)
       .then(res => res.json())
       .then(({ success }) => {
@@ -43,6 +45,9 @@ export default class ShotMeNumberEntryScreen extends React.Component {
   }
 
   render() {
+    if (this.state.loading) {
+      return (<ShotMeLoader />);
+    }
     return (
       <div className="shot-me-number-entry-screen">
         <div className="shot-me-header">
