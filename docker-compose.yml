@@ -4,6 +4,8 @@ services:
     build: ./generate-gif
     ports:
       - "3003:3003"
+    environment:
+      GENERATE_GIF_PORT: 3003
     restart: always
     volumes:
       - type: bind
