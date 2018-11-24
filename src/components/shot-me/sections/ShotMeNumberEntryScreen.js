@@ -21,6 +21,7 @@ export default class ShotMeNumberEntryScreen extends React.Component {
 
   generateGif() {
     const url = window.config.generateGif.getUrl(this.state.phoneNumber);
+    this.setState({ loading: true });
     fetch(url)
       .then(res => res.json())
       .then(({ success }) => {
@@ -43,6 +44,16 @@ export default class ShotMeNumberEntryScreen extends React.Component {
   }
 
   render() {
+    if (this.state.loading) {
+      return (<div className="loader">
+        <div className="spinner">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>);
+    }
     return (
       <div className="shot-me-number-entry-screen">
         <div className="shot-me-header">
