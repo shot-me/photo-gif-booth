@@ -1,8 +1,7 @@
 body {
   overflow: hidden;
 }
-.spinner div {
-  
+.spinner div {  
   width: 20px;
   height: 20px;
   position: absolute;

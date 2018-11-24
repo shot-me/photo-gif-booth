@@ -1,5 +1,6 @@
 import React from 'react';
 import ShotMeBigButton from "../ShotMeBigButton";
+import ShotMeLoader from "../ShotMeLoader";
 import { browserHistory } from "react-router";
 
 const mockedPhotosPath = "http://test.gif-me.pl/camera_output/"
@@ -36,6 +37,7 @@ export default class ShotMePhotoPickerScreen extends React.Component {
       const url = window.config.generateGif.getUrl(photoName);
       console.log('[PHOTO PICKER] Printing photo: ' + photoName);
       console.log('[PHOTO PICKER] Posting request to ' + url);
+      this.setState({ loading: true });
       fetch(url)
         .then(res => res.json())
         .then(({ success }) => {
@@ -49,6 +51,9 @@ export default class ShotMePhotoPickerScreen extends React.Component {
     }
   }
   render() {
+    if (this.state.loading) {
+      return (<ShotMeLoader />);
+    }
     let selectedPhotoName = "";
     if (this.state.selectedPhoto) {
       selectedPhotoName = this.state.takenPhotos[this.state.selectedPhoto];
