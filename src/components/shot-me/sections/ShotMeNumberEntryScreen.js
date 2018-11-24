@@ -3,6 +3,7 @@ import ShotMeNumericKeyboard from "../ShotMeNumericKeyboard";
 import { onShotMeKeyboardClick } from "../actions/keyboardActions";
 import { ShotMePhoneNumberEntry } from "../ShotMePhoneNumberEntry";
 import ShotMeFullWidthButton from "../ShotMeFullWidthButton";
+import ShotMeLoader from "../ShotMeLoader";
 import { browserHistory } from 'react-router';
 
 
@@ -45,14 +46,7 @@ export default class ShotMeNumberEntryScreen extends React.Component {
 
   render() {
     if (this.state.loading) {
-      return (<div className="loader">
-        <div className="spinner">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </div>);
+      return (<ShotMeLoader />);
     }
     return (
       <div className="shot-me-number-entry-screen">
