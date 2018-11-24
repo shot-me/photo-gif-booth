@@ -1,5 +1,6 @@
 import React from 'react';
 import ShotMeBigButton from "../ShotMeBigButton";
+import { browserHistory } from "react-router";
 
 const mockedPhotosPath = "http://test.gif-me.pl/camera_output/"
 
@@ -8,18 +9,12 @@ export default class ShotMePhotoPickerScreen extends React.Component {
     super();
 
     this.state = {
-      takenPhotos: [
-        "1.JPG",
-        "2.JPG",
-        "3.JPG",
-        "4.JPG",
-        "5.JPG",
-        "6.JPG",
-        "7.JPG",
-        "8.JPG"
-      ],
+      takenPhotos: window.photos || [],
       selectedPhoto: ""
     };
+    if (!this.state.takenPhotos) {
+      browserHistory.push("/start");
+    }
   }
 
   renderPhotos() {
@@ -35,15 +30,36 @@ export default class ShotMePhotoPickerScreen extends React.Component {
       })
     );
   }
-
+  printPhoto(photoName) {
+    if (photoName) {
+      const ERROR_MSG = '[PHOTO PICKER] Error posting request to /print/' + photoName;
+      const url = window.config.generateGif.getUrl(photoName);
+      console.log('[PHOTO PICKER] Printing photo: ' + photoName);
+      console.log('[PHOTO PICKER] Posting request to ' + url);
+      fetch(url)
+        .then(res => res.json())
+        .then(({ success }) => {
+          if (!success) {
+            alert(ERROR_MSG);
+          } else {
+            browserHistory.push("/start");
+          }
+        })
+        .catch((err) => alert(ERROR_MSG + err));
+    }
+  }
   render() {
+    let selectedPhotoName = "";
+    if (this.state.selectedPhoto) {
+      selectedPhotoName = this.state.takenPhotos[this.state.selectedPhoto];
+    }
     return (
       <div className="shot-me-content">
         <div className="shot-me-header">Wybierz zdjęcie do druku</div>
         <div className="shot-me-photos-list">{this.renderPhotos()}</div>
         <div className="shot-me-buttons-sections ">
           <ShotMeBigButton linkTo="/" text="ANULUJ" />
-          <ShotMeBigButton text="DRUKUJ" onClick={() => console.log('todo')} />
+          <ShotMeBigButton text="DRUKU J" onClick={() => this.printPhoto(selectedPhotoName)} />
         </div>
       </div>
     );

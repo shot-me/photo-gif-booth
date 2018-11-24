@@ -5,7 +5,9 @@ const generateGifConfig = {
 }
 
 const printConfig = {
-  port: 3001
+  getURL(photoName) {
+    return 'http://localhost:3003/generate_gif/' + photoName;
+  }
 };
 
 const config = {
