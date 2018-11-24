@@ -1,4 +1,7 @@
 const config = {
+  ports: {
+    print: 3001
+  },
   backendPort: 8080,
   frontendPort: 3000,
   backendRoute: "/api",
