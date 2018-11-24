@@ -3,30 +3,27 @@
 const express = require("express");
 const app = express();
 const exec = require('child_process').exec;
-const fs = require('fs');
 const config = require('../config');
 
-function getMostRecentFileName(dir, ind = 0) {
-    const files = fs.readdirSync(dir).sort(function(a, b){
-        return a.time - b.time;
-    });
-    return files[ind];
+function success(res) {
+    res.send({ success: true });
+    res.end();
 }
 
-app.get('/print', function (req, res) {
-    const file = config.photosDir + '/' + getMostRecentFileName(config.photosDir, req.query.ind);
-    console.log('[PRINT] Printing photo: ' + file);
-    exec('cd print && PrintPhoto.exe ' + '../' + file, function(err) {
+app.get('/print/:fileName', function (req, res) {
+    const fileName = req.params.fileName;
+    const filePath = '../' + config.photosDir + '/' + fileName;
+    console.log('[PRINT] Printing photo: ' + filePath);
+    exec('cd print && PrintPhoto.exe ' + filePath, function (err) {
         if (err) {
             console.log('[PRINT] ' + err);
         }
     });
-    res.end();
+    success(res);
 });
 
-app.get('/ping', function (req, res) {
-    res.send({success: true});
-    res.end();
+app.get('/ping', function (_, res) {
+    success(res);
 });
 
 console.log('[PRINT] Started printing service');
