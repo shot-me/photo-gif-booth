@@ -12,6 +12,15 @@ function randomStringGen(len) {
   return text;
 }
 
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
 app.get('/generate_gif/:phoneNumber', function (req, res) {
   const number = req.params.phoneNumber;
   if (!number) {

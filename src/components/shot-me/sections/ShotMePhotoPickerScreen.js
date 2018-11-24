@@ -28,7 +28,7 @@ export default class ShotMePhotoPickerScreen extends React.Component {
         return <img
           src={mockedPhotosPath + photo}
           onClick={() => this.setState({ selectedPhoto: ind })}
-          className={`shot-me-photo-preview ${ind === this.state.selectedPhoto? "shot-me-photo-border" : ""}`}
+          className={`shot-me-photo-preview ${ind === this.state.selectedPhoto ? "shot-me-photo-border" : ""}`}
           onError={(e) => { e.target.onerror = null; e.target.src = "image_path_here" }}
           role="presentation"
         />
@@ -42,7 +42,7 @@ export default class ShotMePhotoPickerScreen extends React.Component {
         <div className="shot-me-header">Wybierz zdjęcie do druku</div>
         <div className="shot-me-photos-list">{this.renderPhotos()}</div>
         <div className="shot-me-buttons-sections ">
-          <ShotMeBigButton linkTo="/" text="COFNIJ" />
+          <ShotMeBigButton linkTo="/" text="ANULUJ" />
           <ShotMeBigButton text="DRUKUJ" onClick={() => console.log('todo')} />
         </div>
       </div>

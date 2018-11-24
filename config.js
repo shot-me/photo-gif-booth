@@ -1,10 +1,16 @@
-const generateGif = require('./generate-gif/config');
+const generateGifConfig = {
+  getUrl(number) {
+    return 'http://localhost:3003/generate_gif/' + number;
+  }
+}
+
+const printConfig = {
+  port: 3001
+};
 
 const config = {
-  ports: {
-    print: 3001,
-  },
-  generateGif,
+  print: printConfig,
+  generateGif: generateGifConfig,
   backendPort: 8080,
   frontendPort: 3000,
   backendRoute: "/api",

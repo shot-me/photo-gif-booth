@@ -10,7 +10,7 @@ export default class ShotMeNumberEntryScreen extends React.Component {
   constructor() {
     super();
     this.state = {
-      phoneNumber: ""
+      phoneNumber: "601825344"
     };
   }
 
@@ -20,25 +20,17 @@ export default class ShotMeNumberEntryScreen extends React.Component {
   }
 
   generateGif() {
-    const frames = window.photos;
-    if (!frames) {
-      alert('No photos. Go to preview screen once again');
-    } else {
-      const url = window.config.generateGif.endpoint();
-      fetch(url, {
-        number: this.state.phoneNumber
+    const url = window.config.generateGif.getUrl(this.state.phoneNumber);
+    fetch(url)
+      .then(res => res.json())
+      .then(({ success }) => {
+        if (!success) {
+          alert("Error. Please try again");
+        } else {
+          browserHistory.push("/photo-picker");
+        }
       })
-        .then(res => res.json())
-        .then(({ success }) => {
-          if (!success) {
-            alert("Error. Please try again");
-          } else {
-            console.log("Successfully generated gif");
-            browserHistory.push("/end");
-          }
-        })
-        .catch(() => alert("Error with api/generateGif:"));
-    }
+      .catch((err) => console.log(err));
   }
 
   checkNumber() {
