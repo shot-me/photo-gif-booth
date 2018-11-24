@@ -14,7 +14,6 @@ function getMostRecentFileName(dir, ind = 0) {
 }
 
 app.get('/print', function (req, res) {
-    // var file = 'C:\\Users\\bzwbk\\heineken\\build\\' + getMostRecentFileName(PHOTO_DIR, req.query.ind);
     const file = config.photosDir + '/' + getMostRecentFileName(config.photosDir, req.query.ind);
     console.log('[PRINT] Printing photo: ' + file);
     exec('cd print && PrintPhoto.exe ' + '../' + file, function(err) {
@@ -30,4 +29,6 @@ app.get('/ping', function (req, res) {
     res.end();
 });
 
+console.log('[PRINT] Started printing service');
+console.log('[PRINT] Listening on port: ' + config.ports.print);
 app.listen(config.ports.print);

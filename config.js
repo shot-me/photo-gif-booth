@@ -1,4 +1,4 @@
-import generateGif from './generate-gif/config';
+const generateGif = require('./generate-gif/config');
 
 const config = {
   ports: {
