@@ -1,4 +1,4 @@
-import { generateGif } from './generate-gif/config';
+import generateGif from './generate-gif/config';
 
 const config = {
   ports: {

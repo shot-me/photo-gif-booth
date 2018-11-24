@@ -17,7 +17,7 @@ app.get('/print', function (req, res) {
     // var file = 'C:\\Users\\bzwbk\\heineken\\build\\' + getMostRecentFileName(PHOTO_DIR, req.query.ind);
     const file = config.photosDir + '/' + getMostRecentFileName(config.photosDir, req.query.ind);
     console.log('[PRINT] Printing photo: ' + file);
-    exec('PrintPhoto.exe ' + file, function(err) {
+    exec('cd print && PrintPhoto.exe ' + '../' + file, function(err) {
         if (err) {
             console.log('[PRINT] ' + err);
         }
