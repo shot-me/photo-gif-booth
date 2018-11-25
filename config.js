@@ -5,14 +5,16 @@ const generateGifConfig = {
 }
 
 const printConfig = {
-  getURL(photoName) {
-    return 'http://localhost:3003/generate_gif/' + photoName;
+  port: 3003,
+  getUrl(photoName) {
+    return 'http://localhost:3003/print/' + photoName;
   }
 };
 
 const config = {
   print: printConfig,
   generateGif: generateGifConfig,
+  photosDir: 'camera_output'
 };
 
 module.exports = config;

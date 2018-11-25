@@ -33,7 +33,7 @@ export default class ShotMePhotoPickerScreen extends React.Component {
   printPhoto(photoName) {
     if (photoName) {
       const ERROR_MSG = '[PHOTO PICKER] Error posting request to /print/' + photoName;
-      const url = window.config.generateGif.getUrl(photoName);
+      const url = window.config.print.getUrl(photoName);
       console.log('[PHOTO PICKER] Printing photo: ' + photoName);
       console.log('[PHOTO PICKER] Posting request to ' + url);
       this.setState({ loading: true });

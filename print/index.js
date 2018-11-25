@@ -11,10 +11,11 @@ function success(res) {
 }
 
 app.get('/print/:fileName', function (req, res) {
+    console.log(config);
     const fileName = req.params.fileName;
     const filePath = '../' + config.photosDir + '/' + fileName;
-    const rmFiles = ' rm ../' + config.photosDir + '/*';
     console.log('[PRINT] Printing photo: ' + filePath);
+    const rmFiles = ' rm ../' + config.photosDir + '/*';
     exec('cd print && PrintPhoto.exe ' + filePath + rmFiles, function (err) {
         if (err) {
             console.log('[PRINT] ' + err);
@@ -28,5 +29,5 @@ app.get('/ping', function (_, res) {
 });
 
 console.log('[PRINT] Started printing service');
-console.log('[PRINT] Listening on port: ' + config.ports.print);
-app.listen(config.ports.print);
+console.log('[PRINT] Listening on port: ' + config.print.port);
+app.listen(config.print.port);
