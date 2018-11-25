@@ -1,0 +1,1 @@
+require("./send.js").setSendingGifInterval();

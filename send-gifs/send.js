@@ -7,7 +7,7 @@ var SENDING_GIF_INTERVAL = 5000;
 var SECURE_CODE = 856324;
 var GIF_DIRECTORY = "./gifs/";
 
-var API_URL = "http://cedc.gif-me.pl";
+var API_URL = "http://ciezarowkicocacola.gif-me.pl";
 
 var SMS_POST = "/sms/";
 var START_CHECKING_AGAIN = true;

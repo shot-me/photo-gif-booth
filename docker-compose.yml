@@ -21,3 +21,10 @@ services:
     environment:
       WEB_APP_PORT: 3002
     restart: always
+  send-gifs:
+    build: ./send-gifs
+    restart: always
+    volumes:
+      - type: bind
+        source: ./gifs
+        target: /app/gifs
