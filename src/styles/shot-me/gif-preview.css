@@ -35,8 +35,8 @@
   }
 
   .shot-me-preview-img-container {
-    width: 600px; /* Width of cropped image */
-    height: 600px;
+    width: 700px; /* Width of cropped image */
+    height: 700px;
     overflow: hidden; /*hide bounds of image */
     margin: 0; /*reset margin of figure tag*/
     margin-left: auto;

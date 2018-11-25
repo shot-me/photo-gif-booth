@@ -1,9 +1,9 @@
 import React from "react";
 import ShotMeBigButton from "../ShotMeBigButton";
 import ShotMeSmallButton from "../ShotMeSmallButton";
-import * as config from "./../../../../config";
 
-const mockedPhotosPath = "http://test.gif-me.pl/camera_output/"
+const backendUrl = "http://localhost:3002";
+const photoUrl = backendUrl + "/camera_output/";
 
 export default class ShotMeGifPreviewScreen extends React.Component {
   constructor() {
@@ -17,10 +17,10 @@ export default class ShotMeGifPreviewScreen extends React.Component {
   }
 
   componentDidMount() {
-    this.getNockedPhoto();
+    this.getLatestPhoto();
   }
   getLatestPhoto() {
-    fetch(config.backendHostUrl + "/api/getLatestPhotos")
+    fetch(backendUrl + "/api/getLatestPhotos")
       .then(res => res.json())
       .then(({ photos }) => {
         this.setState({
@@ -36,21 +36,6 @@ export default class ShotMeGifPreviewScreen extends React.Component {
       });
   }
 
-  getNockedPhoto() {
-    const debugPhotosIds = [
-      "1.JPG",
-      "2.JPG",
-      "3.JPG",
-      "4.JPG",
-      "5.JPG",
-      "6.JPG",
-      "7.JPG",
-      "8.JPG"
-    ];
-
-    this.setState({ photos: debugPhotosIds });
-    this.intervalId = setInterval(this.movePhotosIndex.bind(this), 100);
-  }
   componentWillUnmount() {
     window.photos = this.state.photos;
     window.clearInterval(this.intervalId);
@@ -74,14 +59,14 @@ export default class ShotMeGifPreviewScreen extends React.Component {
   }
 
   render() {
-    if (!this.state.photos) return null;
+    if (!this.state.photos || !this.state.photos.length) return null;
     const photo = this.state.photos[this.state.actualPhotoIndex];
     return (
       <div className="shot-me-content">
         <div className="shot-me-preview-img-container">
           <img
             className="shot-me-preview-img"
-            src={mockedPhotosPath + photo}
+            src={photoUrl + photo}
             onError={(e) => { e.target.onerror = null; e.target.src = "image_path_here" }}
             role="presentation"
           />

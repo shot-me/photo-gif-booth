@@ -16,8 +16,8 @@ function getMostRecentFileNames(dir) {
 
 /* initRouter create router with endpoint getLatestPhotos.url return list of recent photos */
 function initRouter(config) {
-    const { getLatestPhotosUrl, generateGifUrl, photosDir, nrOfFramesFromCamera } = config;
-    router.get(getLatestPhotosUrl, function (req, res) {
+    const { photosDir, nrOfFramesFromCamera } = config;
+    router.get('/getLatestPhotos', function (req, res) {
         res.send({ photos: getMostRecentFileNames(photosDir).slice(0, nrOfFramesFromCamera) });
         res.end();
     });

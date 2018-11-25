@@ -20,6 +20,7 @@ services:
       - "3002:3002"
     environment:
       WEB_APP_PORT: 3002
+      CAMERA_OUTPUT: camera_output
     restart: always
   send-gifs:
     build: ./send-gifs
