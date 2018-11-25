@@ -1,9 +1,7 @@
 import React from "react";
 import ShotMeBigButton from "../ShotMeBigButton";
 import ShotMeSmallButton from "../ShotMeSmallButton";
-
-const backendUrl = "http://localhost:3002";
-const photoUrl = backendUrl + "/camera_output/";
+import { backendUrl, photoUrl } from '../photos';
 
 export default class ShotMeGifPreviewScreen extends React.Component {
   constructor() {

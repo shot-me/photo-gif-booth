@@ -2,8 +2,7 @@ import React from 'react';
 import ShotMeBigButton from "../ShotMeBigButton";
 import ShotMeLoader from "../ShotMeLoader";
 import { browserHistory } from "react-router";
-
-const mockedPhotosPath = "http://test.gif-me.pl/camera_output/"
+import { photoUrl } from '../photos';
 
 export default class ShotMePhotoPickerScreen extends React.Component {
   constructor() {
@@ -22,7 +21,7 @@ export default class ShotMePhotoPickerScreen extends React.Component {
     return (
       this.state.takenPhotos.map((photo, ind) => {
         return <img
-          src={mockedPhotosPath + photo}
+          src={photoUrl + photo}
           onClick={() => this.setState({ selectedPhoto: ind })}
           className={`shot-me-photo-preview ${ind === this.state.selectedPhoto ? "shot-me-photo-border" : ""}`}
           onError={(e) => { e.target.onerror = null; e.target.src = "image_path_here" }}
