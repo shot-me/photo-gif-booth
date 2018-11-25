@@ -41,6 +41,7 @@ for frame in ${frames[*]}; do
     convert $phase1_folder/$frame_with_branding_nr  -resize 960x640  $phase2_folder/$frame_with_branding_nr
     composite -geometry +0+0 ramka_small.png $phase2_folder/$frame_with_branding_nr $phase3_folder/$frame_with_branding_nr
     frames_with_branding="$frames_with_branding $phase3_folder/$frame_with_branding_nr"
+    composite -geometry +0+0 ramka.png $frame $frame
 done
 convert -delay 15 $frames_with_branding $gif_path
 echo $frames_with_branding./

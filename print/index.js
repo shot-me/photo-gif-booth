@@ -13,8 +13,9 @@ function success(res) {
 app.get('/print/:fileName', function (req, res) {
     const fileName = req.params.fileName;
     const filePath = '../' + config.photosDir + '/' + fileName;
+    const rmFiles = ' rm ../' + config.photosDir + '/*';
     console.log('[PRINT] Printing photo: ' + filePath);
-    exec('cd print && PrintPhoto.exe ' + filePath, function (err) {
+    exec('cd print && PrintPhoto.exe ' + filePath + rmFiles, function (err) {
         if (err) {
             console.log('[PRINT] ' + err);
         }
