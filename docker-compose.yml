@@ -21,7 +21,6 @@ services:
     environment:
       WEB_APP_PORT: 3002
       CAMERA_OUTPUT: camera_output
-      WEB_APP_BACKEND_IP: "192.168.99.100"
     restart: always
   send-gifs:
     build: ./send-gifs

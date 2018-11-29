@@ -8,13 +8,9 @@ if test "$#" -lt 4; then
     echo "[BASH] ERROR Illegal number of parameters: <gif_id> <telephone_number> <dest_path> <source_photo_path>"
     exit
 fi
-echo "test"
 
 shopt -s nullglob
 frames=($4/*)
-echo $frames
-echo "ls /app/camera_output"
-ls /app/camera_output
 
 gif_output_folder=$3
 gif_file_name=$2_$1.gif
