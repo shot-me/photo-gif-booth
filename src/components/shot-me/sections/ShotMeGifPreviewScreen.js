@@ -1,7 +1,7 @@
-import React from "react";
-import ShotMeBigButton from "../ShotMeBigButton";
-import ShotMeSmallButton from "../ShotMeSmallButton";
-import { backendUrl, photoUrl } from '../photos';
+import React from 'react';
+import ShotMeBigButton from '../ShotMeBigButton';
+import ShotMeSmallButton from '../ShotMeSmallButton';
+import { getBackendIp, photoUrl } from '../photos';
 
 export default class ShotMeGifPreviewScreen extends React.Component {
   constructor() {
@@ -10,7 +10,7 @@ export default class ShotMeGifPreviewScreen extends React.Component {
       photos: [],
       previousPhotoIndex: 0,
       actualPhotoIndex: 0,
-      message: "Waiting for gif list",
+      message: 'Waiting for gif list'
     };
   }
 
@@ -18,18 +18,18 @@ export default class ShotMeGifPreviewScreen extends React.Component {
     this.getLatestPhoto();
   }
   getLatestPhoto() {
-    fetch(backendUrl + "/api/getLatestPhotos")
+    fetch(getBackendIp() + 'api/getLatestPhotos')
       .then(res => res.json())
       .then(({ photos }) => {
         this.setState({
           photos,
-          message: " Downloaded photos: " + photos + " Now loading them"
+          message: ' Downloaded photos: ' + photos + ' Now loading them'
         });
         this.intervalId = setInterval(this.movePhotosIndex.bind(this), 100);
       })
       .catch(err => {
         this.setState({
-          message: "Error in geting the photos list. Please try again."
+          message: 'Error in geting the photos list. Please try again.'
         });
       });
   }
@@ -65,7 +65,10 @@ export default class ShotMeGifPreviewScreen extends React.Component {
           <img
             className="shot-me-preview-img"
             src={photoUrl + photo}
-            onError={(e) => { e.target.onerror = null; e.target.src = "image_path_here" }}
+            onError={e => {
+              e.target.onerror = null;
+              e.target.src = 'image_path_here';
+            }}
             role="presentation"
           />
         </div>

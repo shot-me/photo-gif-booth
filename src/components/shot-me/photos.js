@@ -6,4 +6,4 @@ export function getBackendIp() {
   return isProduction ? productionIp : devIp;
 }
 
-export const photoUrl = getBackendIp() + '/camera_output/';
+export const photoUrl = getBackendIp() + 'camera_output/';
