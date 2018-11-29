@@ -8,14 +8,14 @@ function getBackendIp() {
 
 const generateGifConfig = {
   getUrl(number) {
-    return getBackendIp + '/generate_gif/' + number;
+    return getBackendIp() + '/generate_gif/' + number;
   }
 };
 
 const printConfig = {
   port: 3003,
   getUrl(photoName) {
-    return getBackendIp + '/print/' + photoName;
+    return getBackendIp() + '/print/' + photoName;
   }
 };
 
