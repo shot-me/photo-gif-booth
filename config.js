@@ -2,13 +2,9 @@ const productionIp = 'http://192.168.99.100:3003/';
 const devIp = 'http://localhost:3003/';
 const isProduction = true;
 
-const getBackendIp = (ip = () => {
-  if (isProduction) {
-    return productionIp;
-  } else {
-    devIp;
-  }
-});
+function getBackendIp() {
+  return isProduction ? productionIp : devIp;
+}
 
 const generateGifConfig = {
   getUrl(number) {
@@ -19,7 +15,7 @@ const generateGifConfig = {
 const printConfig = {
   port: 3003,
   getUrl(photoName) {
-    return backendIp + '/print/' + photoName;
+    return getBackendIp + '/print/' + photoName;
   }
 };
 

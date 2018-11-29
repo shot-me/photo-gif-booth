@@ -6,7 +6,7 @@ This is Frontend for Gifbudka. App connect with backend. You can check it [here]
 
 Gifs are created from pictures which are made by [webcam](https://bitbucket.org/shot-me/gifbudka-box/src/master/docs/webcam.md) or [camera](https://bitbucket.org/shot-me/gifbudka-box/src/master/docs/camera.md).
 
-If you want to change URL for backend chamge it in `config.js`
+If you want to change URL for backend chamge it in `config.js` and `src/components/shot-me/photos.js`
 
 ## GIFs lifecycle
 
