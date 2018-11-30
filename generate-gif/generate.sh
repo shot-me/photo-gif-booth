@@ -10,13 +10,16 @@ if test "$#" -lt 4; then
 fi
 
 shopt -s nullglob
+
+echo "[GENERATE_GIF BASH] Generating gif for files in folder $4"
+
 frames=($(ls -t $4/*  | head -8))
 
 gif_output_folder=$3
 gif_file_name=$2_$1.gif
 gif_path=$gif_output_folder$gif_file_name
 
-echo "[BASH] Generating gif for number of frames: ${#frames[@]}"
+echo "[GENERATE_GIF BASH] Generating gif for number of frames: ${#frames[@]}"
 
 convert ramka.png -resize 960x640  ramka_small.png
 
@@ -48,9 +51,9 @@ echo $frames_with_branding./
 rm -Rf tmp
 rm ramka_small.png
 if [ -e "$gif_path" ]; then
-    echo "[create_gif.sh] Gif generated successfully $gif_path"
+    echo "[GENERATE_GIF BASH] Gif generated successfully $gif_path"
     exit 0
 else
-    echo "[create_gif.sh] Error in generating gif. $gif_path"
+    echo "[GENERATE_GIF BASH] Error in generating gif. $gif_path"
     exit 1
 fi
