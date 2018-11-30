@@ -21,7 +21,7 @@ export default class ShotMeNumberEntryScreen extends React.Component {
   }
 
   generateGif() {
-    const url = window.config.generateGif.getUrl(this.state.phoneNumber);
+    const url = window.config.generateService.getGenerateGifUrl(this.state.phoneNumber);
     this.setState({ loading: true });
     fetch(url)
       .then(res => res.json())
