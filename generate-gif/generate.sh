@@ -10,7 +10,7 @@ if test "$#" -lt 4; then
 fi
 
 shopt -s nullglob
-frames=($4/*)
+frames=($(ls -t $4/*  | head -8))
 
 gif_output_folder=$3
 gif_file_name=$2_$1.gif

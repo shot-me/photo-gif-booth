@@ -26,26 +26,42 @@ app.get('/generate_gif/:phoneNumber', function (req, res) {
   if (!number) {
     res.end('Error: no number provided');
   } else {
-    console.log('[NODE]: Creating gif and sending it to number ' + number);
+    console.log('[GENERATE_GIF] Creating gif and sending it to number ' + number);
     exec("bash generate.sh " + number + " " + randomStringGen(5) + " gifs/ camera_output/ ", function (err, stdout, stederr) {
       if (stederr) {
-        console.log('[NODE]: Generating gif stderr: ' + stederr);
+        console.log('[GENERATE_GIF] Generating gif stderr: ' + stederr);
       }
       if (stdout) {
-        console.log('[NODE]: Generating gif output:');
+        console.log('[GENERATE_GIF] Generating gif output:');
         console.log(stdout);
       }
       if (err) {
-        console.log('[NODE]: Error in creating gif: ' + err);
+        console.log('[GENERATE_GIF] Error in creating gif: ' + err);
 
       }
       const success = err ? false : true;
-      console.log('[NODE]: Finished creating gif with success: ' + success);
+      console.log('[GENERATE_GIF] Finished creating gif with success: ' + success);
+      printFiles();
       res.send({ success });
       res.end();
     });
   }
 });
+
+function printFiles() {
+  console.log('[GENERATE_GIF] Files in camera_output folder:');
+  exec("ls camera_output/ ", function (err, stdout, stederr) {
+    if (stederr) {
+      console.log('[GENERATE_GIF] Cannot read photos from folder:  ' + stederr);
+    }
+    if (stdout) {
+      console.log(stdout);
+    }
+    if (err) {
+      console.log('[GENERATE_GIF] cannot read photos from folder: ' + err);
+    }
+  });
+}
 
 const port = process.env.GENERATE_GIF_PORT;
 if (!port) {
