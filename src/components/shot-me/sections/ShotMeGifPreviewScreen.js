@@ -1,7 +1,7 @@
 import React from 'react';
 import ShotMeBigButton from '../ShotMeBigButton';
 import ShotMeSmallButton from '../ShotMeSmallButton';
-import { getBackendIp, photoUrl } from '../photos';
+import { getWebappIp, photoUrl } from '../photos';
 
 export default class ShotMeGifPreviewScreen extends React.Component {
   constructor() {
@@ -18,7 +18,7 @@ export default class ShotMeGifPreviewScreen extends React.Component {
     this.getLatestPhoto();
   }
   getLatestPhoto() {
-    fetch(getBackendIp() + 'api/getLatestPhotos')
+    fetch(getWebappIp() + 'api/getLatestPhotos')
       .then(res => res.json())
       .then(({ photos }) => {
         this.setState({

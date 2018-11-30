@@ -12,6 +12,8 @@ If you want to change URL for backend change proccess.env.NODE_ENV. On NODE_ENV 
 
 Ready to send GIFs are kept on `gif/gifs` catalog. Our backend listen this catalog in equal time intervals. Based on different GIF ids backend know which pictures have been sent and which are to send.
 
-## Deployment
+## Services
 
-To deploy our application we use Docker. You can find mor information [here](https://bitbucket.org/shot-me/gifbudka-box/src/master/docs/docker.md)
+Web App - port: 3002
+Generate Service - port: 3003
+Print Service - port: 3004

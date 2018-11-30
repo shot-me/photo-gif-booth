@@ -33,18 +33,26 @@ export default class ShotMePhotoPickerScreen extends React.Component {
   printPhoto(photoName) {
     if (photoName) {
       const ERROR_MSG = '[PHOTO PICKER] Error posting request to /print/' + photoName;
-      const url = window.config.print.getUrl(photoName);
+      const generateUrl = window.config.generateService.getGeneratePhotoUrl(photoName);
+      const printUrl = window.config.printService.getPrintUrl(photoName);
       console.log('[PHOTO PICKER] Printing photo: ' + photoName);
-      console.log('[PHOTO PICKER] Posting request to ' + url);
+      console.log('[PHOTO PICKER] Posting request to ' + generateUrl);
       this.setState({ loading: true });
-      fetch(url)
+      fetch(generateUrl)
         .then(res => res.json())
         .then(({ success }) => {
           if (!success) {
-            alert(ERROR_MSG);
-          } else {
-            browserHistory.push("/start");
+            // eslint-disable-next-line
+            throw "Error with generating branding";
           }
+          fetch(printUrl)
+            .then(res => res.json())
+            .then(({ success }) => {
+              if (!success) {
+                // eslint-disable-next-line
+                throw "Error with generating branding";
+              }
+            })
         })
         .catch((err) => alert(ERROR_MSG + err));
     }
