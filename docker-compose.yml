@@ -12,7 +12,7 @@ services:
         source: ///c/Users/gif/camera_output
         target: /app/camera_output
       - type: bind
-        source: ./gifs
+        source: ///c/Users/gif/gifs
         target: /app/gifs
   app:
     build: .
@@ -27,5 +27,5 @@ services:
     restart: always
     volumes:
       - type: bind
-        source: ./gifs
+        source: ///c/Users/gif/gifs
         target: /app/gifs
