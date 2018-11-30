@@ -47,7 +47,7 @@ for frame in ${frames[*]}; do
     composite -geometry +0+0 ramka.png $frame $frame
 done
 convert -delay 15 $frames_with_branding $gif_path
-echo $frames_with_branding./
+
 rm -Rf tmp
 rm ramka_small.png
 if [ -e "$gif_path" ]; then
