@@ -5,7 +5,16 @@ const app = express();
 const exec = require('child_process').exec;
 
 const PRINT_SERVICE_PORT = 3004;
-const PHOTOS_DIR = 'camera_output';
+
+
+var args = process.argv.slice(2);
+if (!args || args.length !== 1) {
+    console.log('Usage: node print/index.js  ///c/Users/gif/camera_output');
+    return;
+}
+
+const printFolder = args[1];
+
 function success(res) {
     res.send({ success: true });
     res.end();
@@ -22,7 +31,7 @@ app.use(function (req, res, next) {
 
 app.get('/print/:fileName', function (req, res) {
     const fileName = req.params.fileName;
-    const filePath = '../' + PHOTOS_DIR + '/' + fileName;
+    const filePath = printFolder + '/' + fileName;
     console.log('[PRINT] Printing photo: ' + filePath);
     //  const rmFiles = ' rm ../' + config.photosDir + '/*';
     exec('cd print && PrintPhoto.exe ' + filePath, function (err) {

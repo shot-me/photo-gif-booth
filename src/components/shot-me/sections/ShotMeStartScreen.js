@@ -22,7 +22,6 @@ export default class ShotMeStartScreen extends React.Component {
     const self = this;
     window.config.isUp()
       .then(function (res) {
-        console.log(res);
         self.setState({
           printingServiceUp: res.printerUp,
           generatingServiceUp: res.generatorUp,
