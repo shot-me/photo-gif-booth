@@ -29,11 +29,4 @@ services:
       - type: bind
         source: ///c/Users/gif/gifs
         target: /app/gifs
-  test:
-    build:
-      context: .
-      dockerfile: ./test/Dockerfile
-    ports:
-      - '3005:3005'
-    restart: always
 

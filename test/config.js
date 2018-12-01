@@ -36,10 +36,59 @@ const printService = {
   },
 };
 
+function isPrinterServiceUp() {
+  const pingUrl = config.printService.getPingUrl();
+  return new Promise(function (resolve, reject) {
+    fetch(pingUrl)
+      .then(function () {
+        resolve(true)
+      })
+      .catch(function () {
+        resolve(false);
+      })
+  })
+}
+
+function isGeneratingServiceUp() {
+  const pingUrl = config.generateService.getPingUrl();
+  return new Promise(function (resolve, reject) {
+    fetch(pingUrl)
+      .then(function () {
+        resolve(true)
+      })
+      .catch(function () {
+        resolve(false);
+      })
+  })
+}
+
+const isUp =
+  (function () {
+    return Promise.all([
+      isPrinterServiceUp(),
+      isGeneratingServiceUp()
+    ])
+      .then(function ([printerUp, generatorUp]) {
+        const status = {
+          printerUp,
+          generatorUp
+        }
+        return status;
+      })
+      .catch(function (err, berr) {
+        const status = {
+          printerUp: false,
+          generatorUp: false
+        }
+        return status;
+      })
+  })
+
 const config = {
   printService,
   generateService,
-  testService
+  testService,
+  isUp
 };
 
 module.exports = config;

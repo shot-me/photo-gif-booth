@@ -11,6 +11,15 @@ function success(res) {
     res.end();
 }
 
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+});
+
 app.get('/print/:fileName', function (req, res) {
     const fileName = req.params.fileName;
     const filePath = '../' + PHOTOS_DIR + '/' + fileName;

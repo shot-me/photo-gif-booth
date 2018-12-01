@@ -7,7 +7,7 @@ export default class ShotMeStartScreen extends React.Component {
     this.state = {
       printingServiceUp: false,
       generatingServiceUp: false,
-      testServiceUp: false
+      testSucces: false
     }
   }
   componentDidMount() {
@@ -17,22 +17,22 @@ export default class ShotMeStartScreen extends React.Component {
     const status = {
       printingServiceUp: false,
       generatingServiceUp: false,
-      testServiceUp: false
+      testSucces: false
     }
     const self = this;
-    fetch(window.config.testService.getTestIp())
-      .then(res => res.json())
+    window.config.isUp()
       .then(function (res) {
+        console.log(res);
         self.setState({
           printingServiceUp: res.printerUp,
           generatingServiceUp: res.generatorUp,
-          testServiceUp: true
+          testSucces: true
         })
       })
       .catch(function () {
         self.setState({
           ...status,
-          testServiceUp: false
+          testSucces: false
         })
       })
   }
@@ -49,7 +49,7 @@ export default class ShotMeStartScreen extends React.Component {
             <div className="shot-me-status">
               <div> Printing Service Up: {"" + this.state.printingServiceUp} </div>
               <div> Generating Service Up: {"" + this.state.generatingServiceUp} </div>
-              <div> Test Service Up: {"" + this.state.testServiceUp} </div>
+              <div> Test Success: {"" + this.state.testSucces} </div>
             </div>
           </div>
         </div>

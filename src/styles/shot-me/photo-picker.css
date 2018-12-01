@@ -9,7 +9,7 @@
 .shot-me-photo-preview {
   display: block; /*remove inline-block spaces*/
   margin: -00px -00px; /* Top and Left parametr of croping */
-  width: 300px;
+  max-width: 300px;
   max-height: 15vh;
   margin: 10px;
 }
@@ -17,7 +17,6 @@
 .shot-me-photo-border {
   border:3px solid white;
 }
-
 
 .shot-me-buttons-sections {
   display: flex;
