@@ -38,8 +38,9 @@ app.get('/print/:fileName', function (req, res) {
         if (err) {
             console.log('[PRINT] ' + err);
         }
+        success(res);
     });
-    success(res);
+
 });
 
 app.get('/ping', function (_, res) {

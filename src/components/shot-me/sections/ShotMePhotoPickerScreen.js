@@ -52,6 +52,7 @@ export default class ShotMePhotoPickerScreen extends React.Component {
                 // eslint-disable-next-line
                 throw "Error with generating branding";
               }
+              browserHistory.push("/start");
             })
         })
         .catch((err) => alert(ERROR_MSG + err));
