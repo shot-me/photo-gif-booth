@@ -34,7 +34,7 @@ export default class ShotMePhotoPickerScreen extends React.Component {
     if (photoName) {
       const ERROR_MSG = '[PHOTO PICKER] Error posting request to /print/' + photoName;
       const generateUrl = window.config.generateService.getGeneratePhotoUrl(photoName);
-      const printUrl = window.config.printService.getPrintUrl(photoName);
+      const printUrl = window.config.printService.getPrintUrl();
       console.log('[PHOTO PICKER] Printing photo: ' + photoName);
       console.log('[PHOTO PICKER] Posting request to ' + generateUrl);
       this.setState({ loading: true });

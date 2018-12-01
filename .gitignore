@@ -14,5 +14,6 @@ gifs/*.gif
 !camera_output/4.jpg
 !camera_output/5.jpg
 !camera_output/6.jpg
-camera_output/*.jpg
+camera_output/*
 .DS_Store
+docker-compose.yml
