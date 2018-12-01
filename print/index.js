@@ -13,7 +13,7 @@ if (!args || args.length !== 1) {
     return;
 }
 
-const printFolder = args[1];
+const printFolder = args[0];
 
 function success(res) {
     res.send({ success: true });
