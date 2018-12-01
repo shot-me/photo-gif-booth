@@ -9,7 +9,7 @@ const PRINT_SERVICE_PORT = 3004;
 
 var args = process.argv.slice(2);
 if (!args || args.length !== 1) {
-    console.log('Usage: node print/index.js  ///c/Users/gif/camera_output');
+    console.log('Usage: node print/index.js  /c/Users/gif/camera_output');
     return;
 }
 
