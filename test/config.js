@@ -6,6 +6,13 @@ function getBackendIp() {
   return isProduction ? productionIp : devIp;
 }
 
+const testService = {
+  port: 3005,
+  getTestIp() {
+    return getBackendIp() + ':' + testService.port
+  }
+}
+
 const generateService = {
   port: 3003,
   getGenerateGifUrl(number) {
@@ -14,20 +21,25 @@ const generateService = {
   getGeneratePhotoUrl(photoPath) {
     return getBackendIp() + ':' + generateService.port + '/generate_photo/' + photoPath;
   },
+  getPingUrl() {
+    return getBackendIp() + ':' + generateService.port + '/ping/';
+  }
 };
 
 const printService = {
   port: 3004,
-
   getPrintUrl(photoName) {
-    return getBackendIp() + ':' + printService.port + '/print/' + photoName;
-  }
+    return 'http://localhost:3004/print/' + photoName;
+  },
+  getPingUrl() {
+    return 'http://localhost:3004/ping/';
+  },
 };
 
 const config = {
   printService,
   generateService,
-  photosDir: 'camera_output'
+  testService
 };
 
 module.exports = config;

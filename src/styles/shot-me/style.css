@@ -104,3 +104,9 @@ body {
 .shot-me-full-width-btn:hover {
   background: #3bab98;
 }
+
+.shot-me-status {
+  position: fixed;
+  bottom: 50px;
+  font-size: 0.5em;
+}

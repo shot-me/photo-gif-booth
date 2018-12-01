@@ -10,7 +10,7 @@ import "./styles/shot-me/end-screen.css";
 import "./styles/shot-me/photo-picker.css";
 import "./styles/shot-me/loader.css"
 
-import config  from '../config';
+import config from '../test/config';
 
 window.config = config;
 

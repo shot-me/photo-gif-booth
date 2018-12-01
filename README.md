@@ -17,3 +17,4 @@ Ready to send GIFs are kept on `gif/gifs` catalog. Our backend listen this catal
 Web App - port: 3002
 Generate Service - port: 3003
 Print Service - port: 3004
+Test Service - port: 3005

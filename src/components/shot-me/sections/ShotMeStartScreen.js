@@ -2,6 +2,43 @@ import React from "react";
 import { Link } from "react-router";
 
 export default class ShotMeStartScreen extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      printingServiceUp: false,
+      generatingServiceUp: false,
+      testServiceUp: false
+    }
+  }
+  componentDidMount() {
+    this.intervalId = setInterval(this.checkConnection.bind(this), 1000);
+  }
+  checkConnection() {
+    const status = {
+      printingServiceUp: false,
+      generatingServiceUp: false,
+      testServiceUp: false
+    }
+    const self = this;
+    fetch(window.config.testService.getTestIp())
+      .then(res => res.json())
+      .then(function (res) {
+        self.setState({
+          printingServiceUp: res.printerUp,
+          generatingServiceUp: res.generatorUp,
+          testServiceUp: true
+        })
+      })
+      .catch(function () {
+        self.setState({
+          ...status,
+          testServiceUp: false
+        })
+      })
+  }
+  componentWillUnmount() {
+    window.clearInterval(this.intervalId);
+  }
   render() {
     return (
       <Link to="/gif-preview" className="shot-me-hyperlink">
@@ -9,6 +46,11 @@ export default class ShotMeStartScreen extends React.Component {
           <div>
             <div className="shot-me-title">ZAPRASZAMY NA PLATFORMĘ</div>
             <div className="shot-me-subtitle">Kliknij żeby zrobić zdjęcia</div>
+            <div className="shot-me-status">
+              <div> Printing Service Up: {"" + this.state.printingServiceUp} </div>
+              <div> Generating Service Up: {"" + this.state.generatingServiceUp} </div>
+              <div> Test Service Up: {"" + this.state.testServiceUp} </div>
+            </div>
           </div>
         </div>
       </Link>

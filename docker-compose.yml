@@ -1,7 +1,7 @@
 version: '3.2'
 services:
-  generate-gif:
-    build: ./generate-gif
+  generate:
+    build: ./generate
     ports:
       - '3003:3003'
     environment:
@@ -29,3 +29,11 @@ services:
       - type: bind
         source: ///c/Users/gif/gifs
         target: /app/gifs
+  test:
+    build:
+      context: .
+      dockerfile: ./test/Dockerfile
+    ports:
+      - '3005:3005'
+    restart: always
+

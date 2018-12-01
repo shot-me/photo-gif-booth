@@ -3,17 +3,17 @@
 const express = require("express");
 const app = express();
 const exec = require('child_process').exec;
-const config = require('../config');
 
+const PRINT_SERVICE_PORT = 3004;
+const PHOTOS_DIR = 'camera_output';
 function success(res) {
     res.send({ success: true });
     res.end();
 }
 
 app.get('/print/:fileName', function (req, res) {
-    console.log(config);
     const fileName = req.params.fileName;
-    const filePath = '../' + config.photosDir + '/' + fileName;
+    const filePath = '../' + PHOTOS_DIR + '/' + fileName;
     console.log('[PRINT] Printing photo: ' + filePath);
     //  const rmFiles = ' rm ../' + config.photosDir + '/*';
     exec('cd print && PrintPhoto.exe ' + filePath, function (err) {
@@ -29,5 +29,5 @@ app.get('/ping', function (_, res) {
 });
 
 console.log('[PRINT] Started printing service');
-console.log('[PRINT] Listening on port: ' + config.printService.port);
-app.listen(config.printService.port);
+console.log('[PRINT] Listening on port: ' + PRINT_SERVICE_PORT);
+app.listen(PRINT_SERVICE_PORT);

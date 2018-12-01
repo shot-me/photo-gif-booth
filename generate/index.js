@@ -21,6 +21,11 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.get('/ping', function (_, res) {
+  res.send({ success: true });
+  res.end();
+});
+
 app.get('/generate_gif/:phoneNumber', function (req, res) {
   const number = req.params.phoneNumber;
   if (!number) {
