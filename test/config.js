@@ -29,7 +29,7 @@ const generateService = {
 const printService = {
   port: 3004,
   getPrintUrl() {
-    return 'http://localhost:3004/print/print.png'
+    return 'http://localhost:3004/print/print.JPG'
   },
   getPingUrl() {
     return 'http://localhost:3004/ping/';
