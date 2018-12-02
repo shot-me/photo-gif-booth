@@ -7,7 +7,8 @@ export default class ShotMeStartScreen extends React.Component {
     this.state = {
       printingServiceUp: false,
       generatingServiceUp: false,
-      testSucces: false
+      testSucces: false,
+      internetUp: false
     }
   }
   componentDidMount() {
@@ -17,6 +18,7 @@ export default class ShotMeStartScreen extends React.Component {
     const status = {
       printingServiceUp: false,
       generatingServiceUp: false,
+      internetUp: false,
       testSucces: false
     }
     const self = this;
@@ -25,6 +27,7 @@ export default class ShotMeStartScreen extends React.Component {
         self.setState({
           printingServiceUp: res.printerUp,
           generatingServiceUp: res.generatorUp,
+          internetUp: res.isInternetUp,
           testSucces: true
         })
       })
@@ -39,17 +42,30 @@ export default class ShotMeStartScreen extends React.Component {
     window.clearInterval(this.intervalId);
   }
   render() {
+    const { internetUp, printingServiceUp, generatingServiceUp, testSucces } = this.state;
+    if (!internetUp) {
+      return <div className="shot-me-content shot-me-info-title">
+        <div> {internetUp ? "" : "WŁĄCZ INTERNET"}</div>
+      </div>
+
+    }
+    if (!printingServiceUp || !generatingServiceUp || !testSucces) {
+      return <div className="shot-me-content shot-me-info-title">
+        <div>
+          <div> Włącz proszę teamviewera</div>
+          <div> i wysłać login/hasło do 601825344</div>
+          <div> Printing Service: {"" + printingServiceUp} </div>
+          <div> Generating Service: {"" + generatingServiceUp} </div>
+          <div> Test did run: {"" + testSucces} </div>
+        </div>
+      </div>
+    }
     return (
       <Link to="/gif-preview" className="shot-me-hyperlink">
         <div className="shot-me-content shot-me-info-title">
           <div>
             <div className="shot-me-title">ZAPRASZAMY NA PLATFORMĘ</div>
             <div className="shot-me-subtitle">Kliknij żeby zrobić zdjęcia</div>
-            <div className="shot-me-status">
-              <div> Printing Service Up: {"" + this.state.printingServiceUp} </div>
-              <div> Generating Service Up: {"" + this.state.generatingServiceUp} </div>
-              <div> Test Success: {"" + this.state.testSucces} </div>
-            </div>
           </div>
         </div>
       </Link>

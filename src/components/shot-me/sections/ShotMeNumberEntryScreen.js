@@ -11,7 +11,7 @@ export default class ShotMeNumberEntryScreen extends React.Component {
   constructor() {
     super();
     this.state = {
-      phoneNumber: "601825344"
+      phoneNumber: ""
     };
   }
 

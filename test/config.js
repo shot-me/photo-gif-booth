@@ -62,23 +62,40 @@ function isGeneratingServiceUp() {
   })
 }
 
+
+function isInternetUp() {
+  const pingUrl = 'https://swapi.co/api/people/1/';
+  return new Promise(function (resolve, reject) {
+    fetch(pingUrl)
+      .then(function (e) {
+        resolve(true)
+      })
+      .catch(function (e) {
+        resolve(false);
+      })
+  })
+}
+
 const isUp =
   (function () {
     return Promise.all([
       isPrinterServiceUp(),
-      isGeneratingServiceUp()
+      isGeneratingServiceUp(),
+      isInternetUp()
     ])
-      .then(function ([printerUp, generatorUp]) {
+      .then(function ([printerUp, generatorUp, isInternetUp]) {
         const status = {
           printerUp,
-          generatorUp
+          generatorUp,
+          isInternetUp
         }
         return status;
       })
       .catch(function (err, berr) {
         const status = {
           printerUp: false,
-          generatorUp: false
+          generatorUp: false,
+          isInternetUp: false
         }
         return status;
       })
