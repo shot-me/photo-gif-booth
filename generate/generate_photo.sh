@@ -15,6 +15,6 @@ echo "[GENERATE PHOTO BASH] Adding branding for file $2 in folder $1"
 cp $1/$2 resized.jpg
 composite -geometry +0+0 ramka.png resized.jpg print.jpg
 echo "[GENERATE PHOTO BASH] Added branding to frame that will be printed - print.JPG"
-convert -density 250 -units pixelsperinch print.jpg converted.jpg
+convert -density 340 -units pixelsperinch print.jpg converted.jpg
 cp converted.jpg $1/print.jpg
 cp print.jpg $1/old_print.jpg
