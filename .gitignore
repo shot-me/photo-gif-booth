@@ -17,3 +17,4 @@ gifs/*.gif
 camera_output/*
 .DS_Store
 docker-compose.yml
+generate/ramka.png
