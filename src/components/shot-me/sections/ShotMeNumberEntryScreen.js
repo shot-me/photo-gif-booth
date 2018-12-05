@@ -29,7 +29,7 @@ export default class ShotMeNumberEntryScreen extends React.Component {
         if (!success) {
           alert("Error. Please try again");
         } else {
-          browserHistory.push("/photo-picker");
+          browserHistory.push("/");
         }
       })
       .catch((err) => console.log(err));

@@ -19,18 +19,19 @@ export default class ShotMePhotoPickerScreen extends React.Component {
 
   renderPhotos() {
     return (
-      this.state.takenPhotos.map((photo, ind) => {
+      this.state.takenPhotos.map(photo => {
         return <img
           src={photoUrl + photo}
-          onClick={() => this.setState({ selectedPhoto: ind })}
-          className={`shot-me-photo-preview ${ind === this.state.selectedPhoto ? "shot-me-photo-border" : ""}`}
+          onClick={() => this.setState({ selectedPhoto: photo })}
+          className={`shot-me-photo-preview ${photo === this.state.selectedPhoto ? "shot-me-photo-border" : ""}`}
           onError={(e) => { e.target.onerror = null; e.target.src = "image_path_here" }}
           role="presentation"
         />
       })
     );
   }
-  printPhoto(photoName) {
+  printPhoto() {
+    const photoName = this.state.selectedPhoto;
     if (photoName) {
       const ERROR_MSG = '[PHOTO PICKER] Error posting request to /print/' + photoName;
       const generateUrl = window.config.generateService.getGeneratePhotoUrl(photoName);
@@ -43,6 +44,7 @@ export default class ShotMePhotoPickerScreen extends React.Component {
         .then(({ success }) => {
           if (!success) {
             // eslint-disable-next-line
+            browserHistory.push("/start");
             throw "Error with generating branding";
           }
           fetch(printUrl)
@@ -55,7 +57,10 @@ export default class ShotMePhotoPickerScreen extends React.Component {
               browserHistory.push("/start");
             })
         })
-        .catch((err) => alert(ERROR_MSG + err));
+        .catch((err) => {
+          alert(ERROR_MSG + err);
+          browserHistory.push("/start");
+        });
     }
   }
   render() {
@@ -72,7 +77,7 @@ export default class ShotMePhotoPickerScreen extends React.Component {
         <div className="shot-me-photos-list">{this.renderPhotos()}</div>
         <div className="shot-me-buttons-sections ">
           <ShotMeBigButton linkTo="/" text="ANULUJ" />
-          <ShotMeBigButton text="DRUKU J" onClick={() => this.printPhoto(selectedPhotoName)} />
+          <ShotMeBigButton text="DRUKUJ" onClick={() => this.printPhoto(selectedPhotoName)} />
         </div>
       </div>
     );

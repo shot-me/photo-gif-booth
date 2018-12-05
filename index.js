@@ -13,12 +13,14 @@ app.use(function (req, res, next) {
   next();
 });
 
+console.log('[WEB_APP] Starting node express app in env: ' + process.env.NODE_ENV);
 if (process.env.NODE_ENV == 'production') {
   console.log("Running production app");
   app.use(express.static(path.join(__dirname, '/build'))); //  "public" off of current is root
 }
 
-const camera_output = process.env.CAMERA_OUTPUT;
+const DEFAULT_CAMERA_OUTPUT = 'camera_output';
+const camera_output = process.env.CAMERA_OUTPUT || DEFAULT_CAMERA_OUTPUT;
 
 app.use("/" + camera_output, express.static(__dirname + "/" + camera_output));
 
@@ -29,6 +31,8 @@ const config = {
 
 app.use('/api', require("./server/api.js")(config));
 
+const DEFAULT_PORT = 3002;
+const port = process.env.WEB_APP_PORT || DEFAULT_PORT;
 
-console.log("[WEB_APP] Application started on port " + process.env.WEB_APP_PORT);
-module.exports = app.listen(process.env.WEB_APP_PORT);
+console.log("[WEB_APP] Application started on port " + port);
+module.exports = app.listen(port);

@@ -22,7 +22,7 @@ const generateService = {
     return getBackendIp() + ':' + generateService.port + '/generate_photo/' + photoPath;
   },
   getPingUrl() {
-    return getBackendIp() + ':' + generateService.port + '/ping/';
+    return 'http://192.168.99.100:' + generateService.port + '/ping/'; // TODO Move to config
   }
 };
 

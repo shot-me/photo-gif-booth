@@ -49,6 +49,7 @@ export default class ShotMeStartScreen extends React.Component {
       </div>
 
     }
+    
     if (!printingServiceUp || !generatingServiceUp || !testSucces) {
       return <div className="shot-me-content shot-me-info-title">
         <div>
