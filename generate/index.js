@@ -92,7 +92,8 @@ function printFiles() {
   });
 }
 
-const port = process.env.GENERATE_GIF_PORT;
+const DEFAULT_GENERATE_PORT = 3011;
+const port = process.env.GENERATE_GIF_PORT || DEFAULT_GENERATE_PORT;
 if (!port) {
   console.log('[GENERATE] Error: No port provided. Check environment variable: GENERATE_GIF_PORT');
 } else {

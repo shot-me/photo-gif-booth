@@ -2,6 +2,19 @@
 
 This is Frontend for Gifbudka. App connect with backend. You can check it [here](https://bitbucket.org/shot-me/gifbudka-server/src/master/)
 
+
+### Frontend
+
+- use `react-start-scripts` to run frontend
+
+### API
+
+- use `index.js` to get our api. For example to `getLatestPhotos()`
+
+### Docker-compose
+
+Creates whole app with all services together and install it on virtual machine. The are indenpendaces so you can test app locally
+
 ## Creating GIFs
 
 Gifs are created from pictures which are made by [webcam](https://bitbucket.org/shot-me/gifbudka-box/src/master/docs/webcam.md) or [camera](https://bitbucket.org/shot-me/gifbudka-box/src/master/docs/camera.md).

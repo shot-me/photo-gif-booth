@@ -44,6 +44,7 @@ export default class ShotMePhotoPickerScreen extends React.Component {
         .then(({ success }) => {
           if (!success) {
             // eslint-disable-next-line
+            browserHistory.push("/start");
             throw "Error with generating branding";
           }
           fetch(printUrl)
@@ -56,7 +57,10 @@ export default class ShotMePhotoPickerScreen extends React.Component {
               browserHistory.push("/start");
             })
         })
-        .catch((err) => alert(ERROR_MSG + err));
+        .catch((err) => {
+          alert(ERROR_MSG + err);
+          browserHistory.push("/start");
+        });
     }
   }
   render() {
