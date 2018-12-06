@@ -21,3 +21,5 @@ convert -density 315 -units pixelsperinch print.jpg converted.jpg
 
 cp converted.jpg $1/print.jpg
 cp print.jpg $1/old_print.jpg
+cp resized.jpg $1/resized.jpg
+cp smaller.jpg $1/smaller.jpg
