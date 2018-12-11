@@ -12,7 +12,7 @@ export default class ShotMeStartScreen extends React.Component {
     }
   }
   componentDidMount() {
-    this.intervalId = setInterval(this.checkConnection.bind(this), 1000);
+    this.intervalId = setInterval(this.checkConnection.bind(this), 8000);
   }
   checkConnection() {
     const status = {
