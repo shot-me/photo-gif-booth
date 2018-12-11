@@ -49,7 +49,7 @@ export default class ShotMeStartScreen extends React.Component {
 
     if (loading) {
       return <div className="shot-me-content shot-me-info-title">
-        <div>ŁADOWANIE</div>
+        <div >ŁADOWANIE</div>
       </div>
     } else if (!internetUp) {
       return <div className="shot-me-content shot-me-info-title">
