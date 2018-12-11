@@ -1,11 +1,13 @@
 import React from 'react';
-import expect from 'expect';
-import { shallow } from 'enzyme';
-// import ShotMeStartScreen from './../src/components/shot-me/sections/ShotMeStartScreen'
+import Enzyme, { shallow } from 'enzyme';
+import ShotMeStartScreen from './../../src/components/shot-me/sections/ShotMeStartScreen'
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({adapter: new Adapter()});
 
 describe('component: ShotMeStartScreen', () => {
-  it('Links to gif preview screen', ()=>{
-    // const wrapper = shallow(<ShotMeStartScreen/>).length
-    // expect(shallow(<ShotMeStartScreen/>).length).toEqual(4);
+  test('Links to gif preview screen', ()=>{
+    const wrapper = shallow(<ShotMeStartScreen/>);
+    expect(wrapper.exists()).toBe(true);
   });
 });
