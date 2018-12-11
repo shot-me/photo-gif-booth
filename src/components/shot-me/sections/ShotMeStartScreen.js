@@ -8,7 +8,8 @@ export default class ShotMeStartScreen extends React.Component {
       printingServiceUp: false,
       generatingServiceUp: false,
       testSucces: false,
-      internetUp: false
+      internetUp: false,
+      loading: true
     }
   }
   componentDidMount() {
@@ -19,7 +20,7 @@ export default class ShotMeStartScreen extends React.Component {
       printingServiceUp: false,
       generatingServiceUp: false,
       internetUp: false,
-      testSucces: false
+      testSucces: false,
     }
     const self = this;
     window.config.isUp()
@@ -28,13 +29,15 @@ export default class ShotMeStartScreen extends React.Component {
           printingServiceUp: res.printerUp,
           generatingServiceUp: res.generatorUp,
           internetUp: res.isInternetUp,
-          testSucces: true
+          testSucces: true,
+          loading: false
         })
       })
       .catch(function () {
         self.setState({
           ...status,
-          testSucces: false
+          testSucces: false,
+          loading: false
         })
       })
   }
@@ -42,12 +45,16 @@ export default class ShotMeStartScreen extends React.Component {
     window.clearInterval(this.intervalId);
   }
   render() {
-    const { internetUp, printingServiceUp, generatingServiceUp, testSucces } = this.state;
-    if (!internetUp) {
-      return <div className="shot-me-content shot-me-info-title">
-        <div> {internetUp ? "" : "WŁĄCZ INTERNET"}</div>
-      </div>
+    const { loading, internetUp, printingServiceUp, generatingServiceUp, testSucces } = this.state;
 
+    if (loading) {
+      return <div className="shot-me-content shot-me-info-title">
+        <div>ŁADOWANIE</div>
+      </div>
+    } else if (!internetUp) {
+      return <div className="shot-me-content shot-me-info-title">
+        <div>WŁĄCZ INTERNET</div>
+      </div>
     }
     
     if (!printingServiceUp || !generatingServiceUp || !testSucces) {
