@@ -8,11 +8,11 @@ export default class ShotMeStartScreen extends React.Component {
       printingServiceUp: false,
       generatingServiceUp: false,
       testSucces: false,
-      internetUp: false
+      internetUp: true
     }
   }
   componentDidMount() {
-    this.intervalId = setInterval(this.checkConnection.bind(this), 8000);
+    this.intervalId = setInterval(this.checkConnection.bind(this), 2000);
   }
   checkConnection() {
     const status = {

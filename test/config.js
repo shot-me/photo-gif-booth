@@ -64,15 +64,15 @@ function isGeneratingServiceUp() {
 
 
 function isInternetUp() {
-  const pingUrl = 'https://swapi.co/api/people/1/';
+  //const pingUrl = 'https://swapi.co/api/people/1/';
   return new Promise(function (resolve, reject) {
-    fetch(pingUrl)
-      .then(function (e) {
+    //fetch(pingUrl)
+    //  .then(function (e) {
         resolve(true)
-      })
-      .catch(function (e) {
+    //  })
+    //  .catch(function (e) {
         resolve(false);
-      })
+    //  })
   })
 }
 
