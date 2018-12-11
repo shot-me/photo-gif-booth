@@ -8,23 +8,31 @@ Enzyme.configure({adapter: new Adapter()});
 window.config=config;
 
 describe('component: ShotMeStartScreen', () => {
-  test('Should check exists of ShotMeStartScreen', ()=>{
+  it('Should check exists of ShotMeStartScreen', ()=>{
     const wrapper = shallow(<ShotMeStartScreen/>);
     expect(wrapper.exists()).toBe(true);
   });
 
-  test('Should check two types of intro: loading and lack of internet', ()=> {
+  it('Should check two types of intro: loading and lack of internet', ()=> {
     const wrapper = shallow(<ShotMeStartScreen/>);
     const loadingText = wrapper.find('div').children().length;
 
     expect(loadingText).toEqual(2);
   });
 
-  test('Should check state loading before and after calling checkConnection()', ()=> {
+  it('Should check state loading before and after calling checkConnection()', ()=> {
     const wrapper = shallow(<ShotMeStartScreen/>);
     const instance = wrapper.instance();
     expect(wrapper.state().loading).toEqual(true);  // before componentDidMount
     instance.componentDidMount();
     setTimeout(()=>expect(wrapper.state().loading).toEqual(false), 1000); // waiting for next interval
+  });
+
+  it('Should change state internetUp when internet is enabled', ()=> {
+    const wrapper = shallow(<ShotMeStartScreen/>);
+    const instance = wrapper.instance();
+    expect(wrapper.state().internetUp).toEqual(false);  // before componentDidMount
+    instance.componentDidMount();
+    setTimeout(()=>expect(wrapper.state().internetUp).toEqual(true), 1000); // waiting for next interval
   });
 });
